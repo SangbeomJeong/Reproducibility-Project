@@ -123,7 +123,7 @@ batch size : 256
 |   Architecture         |      Accuracy(%)         |      Accuracy drop(%)  | 
 |------------------------|--------------------------|------------------------|
 |     Basline(FP32)      |    70.2                  |             -          | 
-|         5bit           |       채워야함                   |  채워야 함       | 
+|         5bit           |       69.39                   |  0.81       | 
 
 
 # Ablation & hyperparameter tuning 
@@ -165,9 +165,9 @@ In an attempt to further improve the previously reproduced performance, we will 
 
 |   Architecture         |      Accuracy(%)         |      Accuracy drop(%)  | 
 |------------------------|--------------------------|------------------------|
-|     Basline(FP32)      |                    |             -          | 
-|         4bit           |                   |                | 
-|         3bit           |                   |                | 
+|     Basline(FP32)      |          92.94          |             -          | 
+|         4bit           |        92.6           |              0.34  | 
+|         3bit           |           92.17        |      0.77          | 
 |         2bit           |                |                | 
 
 
