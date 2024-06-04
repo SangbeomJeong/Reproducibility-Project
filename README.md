@@ -168,7 +168,7 @@ In an attempt to further improve the previously reproduced performance, we will 
 |     Basline(FP32)      |          92.94          |             -          | 
 |         4bit           |        92.6           |              0.34  | 
 |         3bit           |           92.17        |      0.77          | 
-|         2bit           |                |                | 
+|         2bit           |            90.67    |           2.27     | 
 
 
 # Conclusion
