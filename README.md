@@ -7,7 +7,7 @@ This project reproduces APoT Quantization and uses pytorch to show results on CI
 # APoT Quantization
 Additive powers-of-two quantization: An efficient non-uniform discretization for neural networks (APoT) is a paper accepted at ICLR 2020. The paper has 285 citations as of June 3, 2024.
 
-**APoT Quantization논문에서의 양자화 기법 간략하게 추가하기**
+([Click this to view the paper.](https://openreview.net/pdf?id=BkgXT24tDS))
 
 # Code Configuration
 - `resnet.py`: This code declares the structure of resnet for imageNet/CIFAR and exists in the CIFAR/ImageNet folder, respectively. The reason for this is that the structures of resnet used in imageNet and CIFAR are different. For example, in imageNet, the kernel size of the **first convolution is 7**, while in cifar, the kernel size of the **first convolution is 3**.
@@ -15,7 +15,7 @@ Additive powers-of-two quantization: An efficient non-uniform discretization for
 - `main.py`: Main script to execute training and testing of the models.
 - `README.md`: This file, explaining the project and how to run it.
 
-# APoT Quantization Method Reproducibility for CIFAR 10(논문 결과 구현하는 부분)
+# APoT Quantization Method Reproducibility for CIFAR 10
 
 ## How to run it 
 ```
@@ -33,8 +33,11 @@ python main.py --arch res20 --bit 2 -id 0,1 --wd 3e-5  --lr 4e-2 --init result/r
 
 ## environment
 epoch : 300
+
 optimizer : SGD
+
 lr scheduler : MultiStepLR
+
 batch size : 128
 
 
@@ -80,10 +83,10 @@ batch size : 128
 |         2bit           |    92.75                 |          1.19           | 
 
 
-Because we cannot match the completely identical environment (ex: GPU, pytorch version, CUDA version) as the paper, we want to judge the performance using the accuracy drop index in the experimental results. In the actual paper, results exceeded the baseline in all other conditions except for 2bit. On the other hand, our reproducibility results showed results that were lower than baseline in all conditions. Initially, quantization experiments were conducted using pretrained weights provided by the authors of the paper, but performance was lower in all conditions. So, weㄲ conducted an experiment by relearning the baseline from the beginning and securing pretrained weights. **The results of the above reproducibility table (Ours) are the results of quantization experiments obtained directly from the baseline.**
+Because we cannot match the completely identical environment (ex: GPU, pytorch version, CUDA version) as the paper, we want to judge the performance using the accuracy drop index in the experimental results. In the actual paper, results exceeded the baseline in all other conditions except for 2bit. On the other hand, our reproducibility results showed results that were lower than baseline in all conditions. Initially, quantization experiments were conducted using pretrained weights provided by the authors of the paper, but performance was lower in all conditions. So, we conducted an experiment by relearning the baseline from the beginning and securing pretrained weights. **The results of the above reproducibility table (Ours) are the results of quantization experiments obtained directly from the baseline.**
 
 
-# APoT Quantization Method Reproducibility for ImageNet(논문 결과 구현하는 부분)
+# APoT Quantization Method Reproducibility for ImageNet
 
 Due to GPU performance and memory constraints, only 5-bit experiments were reproduced for ResNet18.
 
@@ -102,8 +105,11 @@ python main.py -a resnet18 --bit 5
 
 ## environment
 epoch : 120
+
 optimizer : SGD
+
 lr scheduler : MultiStepLR
+
 batch size : 256
 
 ## Performance Table and Analysis
@@ -128,7 +134,7 @@ batch size : 256
 
 # Ablation & hyperparameter tuning 
 
-We also conducted experiments on CIFAR100 to check whether the APoT quantization method is effective on other datasets. Additionally, in this paper, MultiStepLR is used to adaptively apply the learning rate, but in an attempt to increase performance, we plan to replace it with CosineAnnealingLR and check the results.
+We also performed experiments on CIFAR100 to see if the APoT quantization method is effective on other datasets. In addition, in this paper, the learning rate was adaptively changed using MultiStepLR, but we also conducted an experiment using CosineAnnealingLR with the intention of improving performance and analyzed the results.
 
 ## ResNet models on CIFAR 100
 In the paper, experiments are conducted only on cifar10, and the results on cifar100 are omitted. We would like to conduct an experiment on cifar100 to check whether the quantization method proposed in the paper can be used universally.
@@ -170,10 +176,10 @@ In an attempt to further improve the previously reproduced performance, we will 
 |         3bit           |           92.17        |      0.77          | 
 |         2bit           |            90.67    |           2.27     | 
 
+###Analysis
+As a result of conducting experiments with CosineAnnealingLR, 4-bit quantization recorded the same accuracy drop as MultiStepLR. However, 3/2bit quantization showed a much larger accuracy drop than MultiStepLR. Through this, we concluded that the quantization method proposed in this paper is more effective when using MultiStepLR.
 
-# Conclusion
 
-추가해야함 
 
 
 
