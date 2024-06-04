@@ -176,7 +176,7 @@ In an attempt to further improve the previously reproduced performance, we will 
 |         3bit           |           92.17        |      0.77          | 
 |         2bit           |            90.67    |           2.27     | 
 
-###Analysis
+### Analysis
 As a result of conducting experiments with CosineAnnealingLR, 4-bit quantization recorded the same accuracy drop as MultiStepLR. However, 3/2bit quantization showed a much larger accuracy drop than MultiStepLR. Through this, we concluded that the quantization method proposed in this paper is more effective when using MultiStepLR.
 
 
